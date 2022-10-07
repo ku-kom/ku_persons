@@ -31,5 +31,12 @@ ExtensionUtility::configurePlugin(
   [\UniversityOfCopenhagen\KuPersons\Controller\PersonsController::class => 'personsSearch']
 );
 
-// KU Persons Viewhelper namespace
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['ku_persons'] = ['UniversityOfCopenhagen\KuPersons\ViewHelpers'];
+// KU Persons new renderType
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['formEngine']['nodeRegistry']['1609888016'] = [
+  'nodeName' => 'UserList',
+  'priority' => 40,
+  'class' => \UniversityOfCopenhagen\KuPersons\Form\Element\UserListElement::class,
+];
+
+// KU register hook
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass']['ku_persons'] = \UniversityOfCopenhagen\KuPersons\Hooks\DataHandlerHook::class;

@@ -24,30 +24,50 @@ call_user_func(function () {
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
         'tt_content',
         [
-           'ku_persons_contact_box' => [
-              'exclude' => 0,
-              'label' => 'LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:title',
-              'description' => 'LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:description',
-              'config' => [
-                'type' => 'select',
-                'renderType' => 'selectMultipleSideBySide',
-                'enableMultiSelectFilterTextfield' => true,
-                 'items' => [
-                    ['', '']
-                 ],
-                 'multiSelectFilterItems' => [
-                    ['', ''],
+            'ku_persons_list' => [
+                'exclude' => 0,
+                'label' => 'LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:title',
+                'config' => [
+                    'type' => 'user',
+                    // renderType needs to be registered in ext_localconf.php
+                    'renderType' => 'UserList',
+                    'parameters' => [
+                        'size' => '30',
+                        'color' => '#F49700',
+                    ],
                 ],
-                'itemsProcFunc' => 'UniversityOfCopenhagen\KuPersons\UserFunctions\Employees->getEmployees',
-              ],
-           ],
+            ],
         ]
     );
 
+    // Configure element type
+    $GLOBALS['TCA']['tt_content']['types']['ku_persons'] = array_replace_recursive(
+        $GLOBALS['TCA']['tt_content']['types']['ku_persons'],
+        [
+        'showitem' => '
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
+        --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.general;general,
+        --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.headers;headers,
+    --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
+        --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.frames;frames,
+        --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.appearanceLinks;appearanceLinks,
+    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
+        --palette--;;language,
+    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
+        --palette--;;hidden,
+        --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.access;access,
+    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,
+        rowDescription,
+    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended,
+    '
+        ]
+    );
+
+    // Add new field to palette
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
         'tt_content',
-        'access',
-        'ku_persons_contact_box',
-        'after:list_type'
+        'headers',
+        'ku_persons_list',
+        'after:header'
     );
 });

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the package ku_prototype.
+ * This file is part of the package ku_persons.
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  * Sep 2022 Nanna Ellegaard, University of Copenhagen.
@@ -21,6 +21,14 @@ use TYPO3\CMS\Core\Http\RequestFactory;
 class Employees
 {
     /**
+     * Initiate the RequestFactory.
+     */
+    public function __construct(
+        protected readonly RequestFactory $requestFactory,
+    ) {
+    }
+
+    /**
      * Gets list of KU employees.
      *
      * @param array	The current config array.
@@ -35,5 +43,50 @@ class Employees
         ];
 
         return $config;
+    }
+
+        /**
+     * Request url and return response.
+     * @return ResponseInterface
+     */
+    public function personsSearchAction(): ResponseInterface
+    {
+        // Webservive endpoint url is set in TYPO3 > Admin Tools > Settings > Extension Configuration
+        $url = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_persons', 'uri');
+
+        // Get arguments from request
+        $query = $this->request->hasArgument('query') ? (string)$this->request->getArgument('query') : '';
+
+        // Parameters
+        $additionalOptions = [
+          //'debug' => true,
+          'form_params' => [
+            'format' => 'json',
+            'startrecord' => 0,
+            'recordsperpage' => 100,
+            'searchstring' => $query
+          ]
+        ];
+
+        // Return response object
+        if (!empty($url) && !empty($query)) {
+            $response = $this->requestFactory->request($url, 'POST', $additionalOptions);
+            // Get the content on a successful request
+            if ($response->getStatusCode() === 200) {
+                if (false !== strpos($response->getHeaderLine('Content-Type'), 'application/json')) {
+                    $string = $response->getBody()->getContents();
+                    // getContents() returns a string
+                    // Convert string back to json
+                    $string = iconv('ISO-8859-1', 'UTF-8', $string);
+                    $data = json_decode((string) $string, true);
+
+                    $items = $data['root']['employees'];
+                    if ($items) {
+                        $this->view->assign('employee', $items);
+                    }
+                }
+            }
+        }
+        return $this->htmlResponse();
     }
 }

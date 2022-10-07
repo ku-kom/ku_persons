@@ -21,6 +21,9 @@
         <trans-unit id="phonebook_label" resname="phonebook_label">
             <source>Search by name, title or department</source>
         </trans-unit>
+        <trans-unit id="suggest" resname="suggest" xml:space="preserve">
+			<source>No found</source>
+		</trans-unit>
         </body>
     </file>
 </xliff>
