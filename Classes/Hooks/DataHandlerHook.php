@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace GeorgRinger\NewsTagsuggest\Hooks;
+namespace UniversityOfCopenhagen\KuPersons\Hooks;
 
 /**
  * This file is part of the "news_tagsuggest" Extension for TYPO3 CMS.

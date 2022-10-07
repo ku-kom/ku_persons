@@ -16,13 +16,13 @@
             <source>KU contact box</source>
         </trans-unit>
         <trans-unit id="description" resname="description">
-            <source>Search for a UCPH employee and add a contact box</source>
+            <source>Search for a UCPH employee</source>
         </trans-unit>
         <trans-unit id="phonebook_label" resname="phonebook_label">
             <source>Search by name, title or department</source>
         </trans-unit>
         <trans-unit id="suggest" resname="suggest" xml:space="preserve">
-			<source>No found</source>
+			<source>No matches found</source>
 		</trans-unit>
         </body>
     </file>

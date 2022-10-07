@@ -27,7 +27,7 @@ if (!is_array($GLOBALS['TCA']['tt_content']['types']['ku_persons'] ?? false)) {
     'after'
 );
 
-$GLOBALS['TCA']['tt_content']['types']['ku_persons']['config']['suggestOptions'] = [
+$GLOBALS['TCA']['tt_content']['ku_persons']['columns']['config']['suggestOptions'] = [
     'default' => [
         'minimumCharacters' => 2,
         'searchWholePhrase' => true,
