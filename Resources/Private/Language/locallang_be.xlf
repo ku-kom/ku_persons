@@ -13,13 +13,13 @@
             <source>Items per page</source>
         </trans-unit>
         <trans-unit id="title" resname="title">
-            <source>KU directory of employees</source>
+            <source>KU contact box</source>
         </trans-unit>
         <trans-unit id="description" resname="description">
-            <source>KU directory of employees</source>
+            <source>Search for a UCPH employee and add a contact box</source>
         </trans-unit>
         <trans-unit id="phonebook_label" resname="phonebook_label">
-            <source>Search by name, title, phone number or department</source>
+            <source>Search by name, title or department</source>
         </trans-unit>
         </body>
     </file>

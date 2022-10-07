@@ -18,4 +18,36 @@ call_user_func(function () {
         'LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:title',
         'ku-persons-icon'
     );
+
+
+    // New fields to 'Plugin' tab
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
+        'tt_content',
+        [
+           'ku_persons_contact_box' => [
+              'exclude' => 0,
+              'label' => 'LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:title',
+              'description' => 'LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:description',
+              'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'enableMultiSelectFilterTextfield' => true,
+                 'items' => [
+                    ['', '']
+                 ],
+                 'multiSelectFilterItems' => [
+                    ['', ''],
+                ],
+                'itemsProcFunc' => 'UniversityOfCopenhagen\KuPersons\UserFunctions\Employees->getEmployees',
+              ],
+           ],
+        ]
+    );
+
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addFieldsToPalette(
+        'tt_content',
+        'access',
+        'ku_persons_contact_box',
+        'after:list_type'
+    );
 });
