@@ -1,0 +1,45 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<div class="ku-phonebook-wrapper">
+    <f:if condition="{data.header}">
+        <h2 class="ku-phonebook-header {data.header_position}"><span>{data.header}</span></h2>
+    </f:if>
+    <f:form id="ku-phonebook">
+        <div class="input-group mb-3">
+            <label for="KuPersons" class="visually-hidden">
+                <f:translate key="phonebook_label" />
+            </label>
+            <f:form.textfield type="search" name="query" id="KuPersons" placeholder="{f:translate(key:'phonebook_placeholder')}" class="form-control" additionalAttributes="{required: 'required'}" value="{query}" />
+            <f:form.button aria="{label: '{f:translate(key:\'phonebook_clear\')}'}" class="btn btn-default bi bi-x-lg inactive" id="reset" type="button">
+                <span aria-hidden="true" class="visually-hidden">
+                    <f:translate key="phonebook_clear" />
+                </span>
+            </f:form.button>
+            <f:form.button id="query_KuPersons" class="btn btn-primary">
+                <f:translate key="phonebook_search" />
+            </f:form.button>
+        </div>
+    </f:form>
+<f:comment><f:debug title="Employee">{employee}</f:debug></f:comment>
+    
+    <div id="ku-phonebook-results">
+        <f:flashMessages />
+        <f:if condition="{query}">
+            <f:if condition="{employee} > 0">
+                <f:then>
+                    <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator, query: query, offsetStart: offset_start, offsetEnd: offset_end, items: items}" />
+
+                    <f:render partial="ContentElements/DisplayResults" arguments="{_all}" />
+                    
+                    <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator, query: query, offsetStart: offset_start, offsetEnd: offset_end, items: items}" />
+                </f:then>
+                <f:else>
+                    <div class="alert alert-info" role="alert">
+                        <f:translate key="phonebook_nohits" />
+                    </div>
+                </f:else>
+            </f:if>
+        </f:if>
+    </div>
+</div>
+
+</html>

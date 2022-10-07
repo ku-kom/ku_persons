@@ -1,0 +1,21 @@
+####################################
+#### NEW CONTENT ELEMENT WIZARD ####
+####################################
+
+mod.wizards.newContentElement.wizardItems {
+  // add the content elementS to the tab "plugins"
+  plugins {
+    elements {
+      ku_persons {
+        iconIdentifier = ku-persons-icon
+        title = LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:title
+        description = LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:description
+        tt_content_defValues {
+          CType = list
+          list_type = kupersons_pi1
+        }
+      }
+    }
+    show := addToList(kupersons_pi1)
+  }
+}

@@ -1,0 +1,5 @@
+# cat=Data; type=string; label=LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:persons_uri
+uri = https://www2.adm.ku.dk/selv/pls/!app_tlfbog_v2.soeg
+
+# cat=Data; type=int+; label=LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:persons_itemsPerPage
+itemsPerPage = 20
