@@ -27,10 +27,16 @@ if (!is_array($GLOBALS['TCA']['tt_content']['types']['ku_persons'] ?? false)) {
     'after'
 );
 
-$GLOBALS['TCA']['tt_content']['ku_persons']['columns']['config']['suggestOptions'] = [
+// Suggest options
+$GLOBALS['TCA']['tx_kupersons']['columns']['ku_persons_list_search']['config']['type'] = 'group';
+$GLOBALS['TCA']['tx_kupersons']['columns']['ku_persons_list_search']['config']['allowed'] = 'ku_persons_list_search';
+unset($GLOBALS['TCA']['tx_kupersons']['columns']['ku_persons_list_search']['config']['renderType']);
+
+$GLOBALS['TCA']['tx_kupersons']['columns']['ku_persons_list_search']['config']['suggestOptions'] = [
     'default' => [
         'minimumCharacters' => 2,
+        'maxItemsInResultList' => 100,
         'searchWholePhrase' => true,
-        'receiverClass' => \UniversityOfCopenhagen\KuPersons\Backend\Wizard\SuggestWizardReceiver::class
+        'receiverClass' => \UniversityOfCopenhagen\KuPersons\Classes\Backend\Wizard\SuggestWizardReceiver::class
     ],
 ];

@@ -12,10 +12,12 @@ defined('TYPO3') or die();
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 call_user_func(function () {
+    $ll = 'LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:';
+
     ExtensionUtility::registerPlugin(
         'ku_persons',
         'Pi1',
-        'LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:title',
+        $ll . 'xlf:title',
         'ku-persons-icon'
     );
 
@@ -26,7 +28,7 @@ call_user_func(function () {
         [
             'ku_persons_list' => [
                 'exclude' => 0,
-                'label' => 'LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:title',
+                'label' => $ll . 'title',
                 'config' => [
                     'type' => 'user',
                     // renderType needs to be registered in ext_localconf.php
@@ -38,20 +40,29 @@ call_user_func(function () {
                 ],
             ],
             'ku_persons_list_search' => [
-                'label' => 'LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:description',
+                'label' => $ll . 'description',
                 'config' => [
                    'type' => 'group',
                    'allowed' => 'pages, tt_content',
+                   'maxitems' => 100,
+                   'fieldControl' => [
+                        'elementBrowser' => [
+                            'disabled' => true,
+                        ],
+                    ],
                    'suggestOptions' => [
-                      'default' => [
-                         'searchWholePhrase' => 1
-                      ],
-                      'pages' => [
-                         'searchCondition' => 'doktype = 1'
-                      ]
-                   ]
+                        'default' => [
+                            'searchWholePhrase' => true
+                        ],
+                        'pages' => [
+                            'searchCondition' => 'doktype = 1'
+                        ]
+                    ],
+                    'behaviour' => [
+                        'allowLanguageSynchronization' => true,
+                    ],
                 ]
-             ],
+            ],
         ]
     );
     

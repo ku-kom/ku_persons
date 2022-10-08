@@ -14,6 +14,9 @@ namespace UniversityOfCopenhagen\KuPersons\Backend\Wizard;
 use TYPO3\CMS\Backend\Form\Wizard\SuggestWizardDefaultReceiver;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Utility\StringUtility;
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\Http\RequestFactory;
 
 class SuggestWizardReceiver extends SuggestWizardDefaultReceiver
 {
@@ -22,9 +25,25 @@ class SuggestWizardReceiver extends SuggestWizardDefaultReceiver
 
     public function queryTable(&$params, $recursionCounter = 0)
     {
+        $searchString = strtolower($params['value']);
+        // Webservive endpoint url is set in TYPO3 > Admin Tools > Settings > Extension Configuration
+        $url = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_persons', 'uri');
+        // Parameters
+        $additionalOptions = [
+            //'debug' => true,
+            'form_params' => [
+              'format' => 'json',
+              'startrecord' => 0,
+              'recordsperpage' => 100,
+              'searchstring' => $searchString
+            ]
+        ];
+
+        $response = $this->requestFactory->request($url, 'POST', $additionalOptions);
+
         $rows = parent::queryTable($params, $recursionCounter);
 
-        $searchString = strtolower($params['value']);
+        
         $matchRow = array_filter($rows, static function ($value) use ($searchString) {
             return strtolower($value['label']) === $searchString;
         });

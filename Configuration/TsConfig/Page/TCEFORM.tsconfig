@@ -5,28 +5,21 @@ TCEFORM {
     tt_content {
         subheader {
            types {
-                kupersons_pi1 {
-                    disabled = 1
-                }
-            }
-        }
-        pages {
-            types {
-                kupersons_pi1 {
+                ku_persons {
                     disabled = 1
                 }
             }
         }
         header_link {
             types {
-                kupersons_pi1 {
+                ku_persons {
                     disabled = 1
                 }
             }
         }
         header_position {
             types {
-                kupersons_pi1 {
+                ku_persons {
                     disabled = 1
                 }
             }
