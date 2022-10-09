@@ -19,7 +19,7 @@ lib.contentElement {
 #### MAKE PLUGIN ACT AS cTYPE ###
 #################################
 tt_content.ku_persons >
-tt_content.ku_persons =< tt_content.list.30.kupersons_pi1
+tt_content.ku_persons =< tt_content.list.20.kupersons_pi1
 
 #################
 #### PLUGIN #####

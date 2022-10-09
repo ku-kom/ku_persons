@@ -88,18 +88,18 @@ class DataHandlerHook
         return (int)($pagesTsConfig['tx_news.']['tagPid'] ?? $targetPage);
     }
 
-    // protected function getLocalDataHandlerInstance(DataHandler $parentDataHandler): DataHandler
-    // {
-    //     $localDataHandler = GeneralUtility::makeInstance(DataHandler::class);
-    //     $localDataHandler->copyTree = $parentDataHandler->copyTree;
-    //     $localDataHandler->enableLogging = $parentDataHandler->enableLogging;
-    //     // Transformations should NOT be carried out during copy
-    //     $localDataHandler->dontProcessTransformations = true;
-    //     // make sure the isImporting flag is transferred, so all hooks know if
-    //     // the current process is an import process
-    //     $localDataHandler->isImporting = $parentDataHandler->isImporting;
-    //     $localDataHandler->bypassAccessCheckForRecords = $parentDataHandler->bypassAccessCheckForRecords;
-    //     $localDataHandler->bypassWorkspaceRestrictions = $parentDataHandler->bypassWorkspaceRestrictions;
-    //     return $localDataHandler;
-    // }
+    protected function getLocalDataHandlerInstance(DataHandler $parentDataHandler): DataHandler
+    {
+        $localDataHandler = GeneralUtility::makeInstance(DataHandler::class);
+        $localDataHandler->copyTree = $parentDataHandler->copyTree;
+        $localDataHandler->enableLogging = $parentDataHandler->enableLogging;
+        // Transformations should NOT be carried out during copy
+        $localDataHandler->dontProcessTransformations = true;
+        // make sure the isImporting flag is transferred, so all hooks know if
+        // the current process is an import process
+        $localDataHandler->isImporting = $parentDataHandler->isImporting;
+        $localDataHandler->bypassAccessCheckForRecords = $parentDataHandler->bypassAccessCheckForRecords;
+        $localDataHandler->bypassWorkspaceRestrictions = $parentDataHandler->bypassWorkspaceRestrictions;
+        return $localDataHandler;
+    }
 }

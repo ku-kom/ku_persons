@@ -20,10 +20,9 @@ if ($versionInformation->getMajorVersion() < 12) {
    ');
 }
 
-// Register plugin
-
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
+// Register plugin
 ExtensionUtility::configurePlugin(
   'ku_persons',
   'Pi1',

@@ -31,7 +31,6 @@ call_user_func(function () {
                 'label' => $ll . 'title',
                 'config' => [
                     'type' => 'user',
-                    // renderType needs to be registered in ext_localconf.php
                     'renderType' => 'UserList',
                     'parameters' => [
                         'size' => '30',
@@ -61,6 +60,7 @@ call_user_func(function () {
                     'behaviour' => [
                         'allowLanguageSynchronization' => true,
                     ],
+                    'receiverClass' => \UniversityOfCopenhagen\KuPersons\Backend\Wizard\SuggestWizardReceiver::class
                 ]
             ],
         ]

@@ -26,6 +26,7 @@ class SuggestWizardReceiver extends SuggestWizardDefaultReceiver
     public function queryTable(&$params, $recursionCounter = 0)
     {
         $searchString = strtolower($params['value']);
+
         // Webservive endpoint url is set in TYPO3 > Admin Tools > Settings > Extension Configuration
         $url = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_persons', 'uri');
         // Parameters
@@ -54,7 +55,7 @@ class SuggestWizardReceiver extends SuggestWizardDefaultReceiver
                 'class' => '',
                 'label' => $params['value'],
                 'path' => '',
-                'sprite' => $this->iconFactory->getIconForRecord($this->table, [], Icon::SIZE_SMALL)->render(),
+                'sprite' => '',
                 'style' => '',
                 'table' => '',
                 'text' => sprintf($this->getLanguageService()->sL('LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:suggest'), $params['value']),
