@@ -40,7 +40,18 @@ class SuggestWizardReceiver extends SuggestWizardDefaultReceiver
             ]
         ];
 
-        $response = $this->requestFactory->request($url, 'POST', $additionalOptions);
+        if (!empty($searchString)) {
+            $response = $this->requestFactory->request($url, 'POST', $additionalOptions);
+            if ($response->getStatusCode() === 200) {
+                if (false !== strpos($response->getHeaderLine('Content-Type'), 'application/json')) {
+                    $string = $response->getBody()->getContents();
+                    $string = iconv('ISO-8859-1', 'UTF-8', $string);
+                    $data = json_decode((string) $string, true);
+
+                    $items = $data['root']['employees'];
+                }
+            }
+        }
 
         $rows = parent::queryTable($params, $recursionCounter);
 
