@@ -64,9 +64,6 @@ $ll = 'LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:';
                         'searchCondition' => 'doktype = 1'
                     ]
                 ],
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true,
-                ],
                 'receiverClass' => \UniversityOfCopenhagen\KuPersons\Backend\Wizard\SuggestWizardReceiver::class
             ]
         ],

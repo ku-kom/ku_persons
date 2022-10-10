@@ -20,6 +20,9 @@ lib.contentElement {
 #################################
 tt_content.ku_persons >
 tt_content.ku_persons =< tt_content.list.20.kupersons_pi1
+tt_content.ku_persons {
+    templateName = ContactBox
+}
 
 #################
 #### PLUGIN #####
@@ -27,13 +30,16 @@ tt_content.ku_persons =< tt_content.list.20.kupersons_pi1
 plugin.tx_kupersons {
     view {
         templateRootPaths {
-            30 = EXT:ku_persons/Resources/Private/Templates/
+            0 = EXT:ku_persons/Resources/Private/Templates/
+            1 = {$plugin.tx_kupersons.view.templateRootPath}
         }
         partialRootPaths {
-            30 = EXT:ku_persons/Resources/Private/Partials/
+            0 = EXT:ku_persons/Resources/Private/Partials/
+            1 = {$plugin.tx_kupersons.view.partialRootPath}
         }
         layoutRootPaths {
-            30 = EXT:ku_persons/Resources/Private/Layouts/
+            0 = EXT:ku_persons/Resources/Private/Layouts/
+            1 = {$plugin.tx_kupersons.view.layoutRootPath}
         }
     }
 }
