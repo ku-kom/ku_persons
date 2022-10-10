@@ -1,4 +1,4 @@
-plugin.tx_kuphonebook {
+plugin.tx_kupersons {
     view {
         # cat=plugin.tx_kupersons/file; type=string; label=Path to template root (FE)
         templateRootPath = EXT:ku_persons/Resources/Private/Templates/
