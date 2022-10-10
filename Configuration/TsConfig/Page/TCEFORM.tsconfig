@@ -24,5 +24,19 @@ TCEFORM {
                 }
             }
         }
+        header_layout {
+            types {
+                ku_persons {
+                    disabled = 1
+                }
+            }
+        }
+        date {
+            types {
+                ku_persons {
+                    disabled = 1
+                }
+            }
+        }
     }
 }
