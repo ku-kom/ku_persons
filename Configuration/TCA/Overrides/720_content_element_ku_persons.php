@@ -50,7 +50,7 @@ $ll = 'LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:';
             'config' => [
                 'placeholder' => $ll . 'description',
                 'type' => 'group',
-                'allowed' => 'pages, tt_content',
+                'allowed' => 'tt_content',
                 'maxitems' => 100,
                 'fieldControl' => [
                     'elementBrowser' => [
@@ -62,9 +62,6 @@ $ll = 'LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:';
                         'searchWholePhrase' => true,
                         'receiverClass' => \UniversityOfCopenhagen\KuPersons\Backend\Wizard\SuggestWizardReceiver::class
                     ],
-                    'pages' => [
-                        'searchCondition' => 'doktype = 1'
-                    ]
                 ]
             ]
         ],
