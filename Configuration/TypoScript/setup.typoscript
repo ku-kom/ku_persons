@@ -13,6 +13,12 @@ lib.contentElement {
     layoutRootPaths {
         10 = EXT:ku_persons/Resources/Private/Layouts/ContentElements/
     }
+    dataProcessing {
+      10 = UniversityOfCopenhagen\KuPersons\DataProcessing\EmployeeDataProcessing
+      10 {
+         as = employee
+      }   
+   }
 }
 
 #################################
@@ -42,4 +48,18 @@ plugin.tx_kupersons {
             1 = {$plugin.tx_kupersons.view.layoutRootPath}
         }
     }
+}
+
+###############################
+#### CUSTOM DATAPROCESSOR #####
+###############################
+page.10 = FLUIDTEMPLATE
+page.10 {
+   # file = path/to/your/templatefile.html
+   dataProcessing {
+      10 = UniversityOfCopenhagen\KuPersons\DataProcessing\EmployeeDataProcessing
+      10 {
+         as = employee
+      }   
+   }
 }
