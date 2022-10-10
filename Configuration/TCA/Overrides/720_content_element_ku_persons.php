@@ -48,15 +48,17 @@ $ll = 'LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:';
         'ku_persons_list_search' => [
             'label' => $ll . 'description',
             'config' => [
-               'type' => 'group',
-               'allowed' => 'pages, tt_content',
-               'maxitems' => 100,
-               'fieldControl' => [
+                'placeholder' => $ll . 'description',
+                'type' => 'group',
+                'allowed' => 'ku_persons_list_search',
+                'foreign_table' => 'ku_persons_list_search',
+                'maxitems' => 100,
+                'fieldControl' => [
                     'elementBrowser' => [
                         'disabled' => true,
                     ],
                 ],
-               'suggestOptions' => [
+                'suggestOptions' => [
                     'default' => [
                         'searchWholePhrase' => true
                     ],
