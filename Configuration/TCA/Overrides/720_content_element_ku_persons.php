@@ -93,5 +93,6 @@ $ku_persons = [
     ',
 ];
 
+// Add fields to both cType and plugin
 $GLOBALS['TCA']['tt_content']['types']['ku_persons'] = $ku_persons;
-
+$GLOBALS['TCA']['tt_content']['types']['list'] = $ku_persons;

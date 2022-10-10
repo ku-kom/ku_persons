@@ -21,3 +21,6 @@ call_user_func(function () {
         'ku-persons-icon'
     );
 });
+
+// Remove default plugin fields
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['kupersons_pi1'] = 'recursive,pages';
