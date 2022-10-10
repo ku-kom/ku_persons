@@ -26,7 +26,6 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 ExtensionUtility::configurePlugin(
   'ku_persons',
   'Pi1',
-  [\UniversityOfCopenhagen\KuPersons\Controller\PersonsController::class => 'personsSearch'],
   [\UniversityOfCopenhagen\KuPersons\Controller\PersonsController::class => 'personsSearch']
 );
 
