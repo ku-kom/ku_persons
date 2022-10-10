@@ -58,7 +58,7 @@ class SuggestWizardReceiver extends SuggestWizardDefaultReceiver
                         'sprite' => $this->iconFactory->getIconForRecord($this->table, [], Icon::SIZE_SMALL)->render(),
                         'style' => '',
                         'table' => $this->table,
-                        'text' => $employee['PERSON_FORNAVN'] . $employee['PERSON_EFTERNAVN'],
+                        'text' => $employee['PERSON_FORNAVN'] . ' ' . $employee['PERSON_EFTERNAVN'],
                         'uid' => 63,
                     ];
                 }

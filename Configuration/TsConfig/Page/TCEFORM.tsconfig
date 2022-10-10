@@ -40,13 +40,13 @@ TCEFORM {
             }
         }
         # Settings for plugin
-        CType {
-            types {
-                list {
-                    disabled = 1
-                }
-            }
-        }
+        // CType {
+        //     types {
+        //         list {
+        //             disabled = 1
+        //         }
+        //     }
+        // }
         header_position {
             types {
                 list {

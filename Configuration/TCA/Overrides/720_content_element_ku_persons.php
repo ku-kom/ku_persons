@@ -33,24 +33,13 @@ $ll = 'LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
     'tt_content',
     [
-        'ku_persons_list' => [
-            'exclude' => 0,
-            'label' => $ll . 'title',
-            'config' => [
-                'type' => 'user',
-                'renderType' => 'UserList',
-                'parameters' => [
-                    'size' => '30',
-                    'color' => '#F49700',
-                ],
-            ],
-        ],
         'ku_persons_list_search' => [
             'label' => $ll . 'description',
             'config' => [
                 'placeholder' => $ll . 'description',
                 'type' => 'group',
                 'allowed' => 'tt_content',
+                'minitems' => 0,
                 'maxitems' => 100,
                 'fieldControl' => [
                     'elementBrowser' => [
