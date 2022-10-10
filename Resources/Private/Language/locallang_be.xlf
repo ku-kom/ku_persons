@@ -22,7 +22,7 @@
             <source>Search by name, title or department</source>
         </trans-unit>
         <trans-unit id="suggest" resname="suggest" xml:space="preserve">
-			<source>No matches found</source>
+			<source>Tag &quot;%s&quot; could not be found.</source>
 		</trans-unit>
         </body>
     </file>

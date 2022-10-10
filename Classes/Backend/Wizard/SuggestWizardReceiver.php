@@ -14,9 +14,6 @@ namespace UniversityOfCopenhagen\KuPersons\Backend\Wizard;
 use TYPO3\CMS\Backend\Form\Wizard\SuggestWizardDefaultReceiver;
 use TYPO3\CMS\Core\Imaging\Icon;
 use TYPO3\CMS\Core\Utility\StringUtility;
-use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
-use TYPO3\CMS\Core\Http\RequestFactory;
 
 class SuggestWizardReceiver extends SuggestWizardDefaultReceiver
 {
@@ -25,37 +22,9 @@ class SuggestWizardReceiver extends SuggestWizardDefaultReceiver
 
     public function queryTable(&$params, $recursionCounter = 0)
     {
-        $searchString = strtolower($params['value']);
-
-        // Webservive endpoint url is set in TYPO3 > Admin Tools > Settings > Extension Configuration
-        $url = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_persons', 'uri');
-        // Parameters
-        $additionalOptions = [
-            //'debug' => true,
-            'form_params' => [
-              'format' => 'json',
-              'startrecord' => 0,
-              'recordsperpage' => 100,
-              'searchstring' => $searchString
-            ]
-        ];
-
-        if (!empty($searchString)) {
-            $response = $this->requestFactory->request($url, 'POST', $additionalOptions);
-            if ($response->getStatusCode() === 200) {
-                if (false !== strpos($response->getHeaderLine('Content-Type'), 'application/json')) {
-                    $string = $response->getBody()->getContents();
-                    $string = iconv('ISO-8859-1', 'UTF-8', $string);
-                    $data = json_decode((string) $string, true);
-
-                    $items = $data['root']['employees'];
-                }
-            }
-        }
-
         $rows = parent::queryTable($params, $recursionCounter);
-
         
+        $searchString = strtolower($params['value']);
         $matchRow = array_filter($rows, static function ($value) use ($searchString) {
             return strtolower($value['label']) === $searchString;
         });
@@ -66,11 +35,11 @@ class SuggestWizardReceiver extends SuggestWizardDefaultReceiver
                 'class' => '',
                 'label' => $params['value'],
                 'path' => '',
-                'sprite' => '',
+                'sprite' => $this->iconFactory->getIconForRecord($this->table, [], Icon::SIZE_SMALL)->render(),
                 'style' => '',
-                'table' => '',
-                'text' => sprintf($this->getLanguageService()->sL('LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:suggest'), $params['value']),
-                'uid' => '123',
+                'table' => $this->table,
+                'text' => sprintf($this->getLanguageService()->sL('LLL:EXT:news/Resources/Private/Language/locallang_be.xlf:tag_suggest'), $params['value']),
+                'uid' => $newUid . self::DELIMITER . $params['value'],
             ];
         }
 

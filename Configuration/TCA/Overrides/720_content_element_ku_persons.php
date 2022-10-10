@@ -59,13 +59,13 @@ $ll = 'LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:';
                 ],
                 'suggestOptions' => [
                     'default' => [
-                        'searchWholePhrase' => true
+                        'searchWholePhrase' => true,
+                        'receiverClass' => \UniversityOfCopenhagen\KuPersons\Backend\Wizard\SuggestWizardReceiver::class
                     ],
                     'pages' => [
                         'searchCondition' => 'doktype = 1'
                     ]
-                ],
-                'receiverClass' => \UniversityOfCopenhagen\KuPersons\Backend\Wizard\SuggestWizardReceiver::class
+                ]
             ]
         ],
     ]
