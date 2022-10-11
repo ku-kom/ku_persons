@@ -20,14 +20,11 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 
 class SuggestWizardReceiver extends SuggestWizardDefaultReceiver
 {
-
-    public const DELIMITER = '__--__';
-
     public function queryTable(&$params, $recursionCounter = 0)
     {   
         $rows = [];
         $requestFactory = GeneralUtility::makeInstance(RequestFactory::class);
-        $url = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_phonebook', 'uri');
+        $url = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_persons', 'uri');
         $query = strtolower($params['value']);
         $additionalOptions = [
             //'debug' => true,
