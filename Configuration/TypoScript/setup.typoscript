@@ -13,11 +13,6 @@ lib.contentElement {
     layoutRootPaths {
         10 = EXT:ku_persons/Resources/Private/Layouts/ContentElements/
     }
-    dataProcessing {
-        10 = UniversityOfCopenhagen\KuPersons\Dataprocessing\EmployeeProcessor
-        fieldName = ku_persons_list_search
-        as = employees
-    }
 }
 
 #################################
@@ -27,6 +22,12 @@ tt_content.ku_persons >
 tt_content.ku_persons =< tt_content.list.20.kupersons_pi1
 tt_content.ku_persons {
     templateName = ContactBox
+    dataProcessing {
+        20 = UniversityOfCopenhagen\KuPersons\Dataprocessing\EmployeeProcessor
+        20 {
+            as = employee
+        }
+    }
 }
 
 #################

@@ -48,6 +48,9 @@ $ll = 'LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:';
                 ],
                 'suggestOptions' => [
                     'default' => [
+                        'minimumCharacters' => 2,
+                        'maxItemsInResultList' => 100,
+                        'maxPathTitleLength' => 50,
                         'searchWholePhrase' => true,
                         'receiverClass' => \UniversityOfCopenhagen\KuPersons\Backend\Wizard\SuggestWizardReceiver::class
                     ],

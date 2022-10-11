@@ -59,7 +59,7 @@ class SuggestWizardReceiver extends SuggestWizardDefaultReceiver
                         'style' => '',
                         'table' => $this->table,
                         'text' => $employee['PERSON_FORNAVN'] . ' ' . $employee['PERSON_EFTERNAVN'],
-                        'uid' => 63,
+                        'uid' => 63 //$employee['ANSAT_ARB_EMAIL'],
                     ];
                 }
             }
