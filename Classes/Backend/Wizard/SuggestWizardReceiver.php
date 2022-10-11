@@ -52,7 +52,7 @@ class SuggestWizardReceiver extends SuggestWizardDefaultReceiver
                         'class' => '',
                         'label' => $params['value'],
                         'path' => '',
-                        'sprite' => $this->iconFactory->getIconForRecord($this->table, [], Icon::SIZE_SMALL)->render(),
+                        'sprite' => $this->iconFactory->getIcon('ku-persons-icon', Icon::SIZE_SMALL)->render('inline'),
                         'style' => '',
                         'table' => $this->table,
                         'text' => $employee['PERSON_FORNAVN'] . ' ' . $employee['PERSON_EFTERNAVN'],
