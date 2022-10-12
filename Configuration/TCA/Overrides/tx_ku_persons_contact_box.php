@@ -83,3 +83,10 @@ $ku_persons = [
 // Add fields to both cType and plugin
 $GLOBALS['TCA']['tt_content']['types']['ku_persons'] = $ku_persons;
 $GLOBALS['TCA']['tt_content']['types']['list'] = $ku_persons;
+
+/**
+ * Registers backend previewRenderer for custom content element and plugin
+ */
+
+$GLOBALS['TCA']['tt_content']['types']['ku_persons']['previewRenderer'] = \UniversityOfCopenhagen\KuPersons\Backend\Preview\contactBoxPreviewRenderer::class;
+$GLOBALS['TCA']['tt_content']['types']['list']['previewRenderer'] = \UniversityOfCopenhagen\KuPersons\Backend\Preview\contactBoxPreviewRenderer::class;
