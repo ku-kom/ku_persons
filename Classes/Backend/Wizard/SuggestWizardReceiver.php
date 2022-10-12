@@ -21,7 +21,7 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 class SuggestWizardReceiver extends SuggestWizardDefaultReceiver
 {
     public function queryTable(&$params, $recursionCounter = 0)
-    {   
+    {
         $rows = [];
         $requestFactory = GeneralUtility::makeInstance(RequestFactory::class);
         $url = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_persons', 'uri');
@@ -36,7 +36,7 @@ class SuggestWizardReceiver extends SuggestWizardDefaultReceiver
             ]
           ];
         $response = $requestFactory->request($url, 'POST', $additionalOptions);
-            // Get the content on a successful request
+        // Get the content on a successful request
         if ($response->getStatusCode() === 200) {
             if (false !== strpos($response->getHeaderLine('Content-Type'), 'application/json')) {
                 $string = $response->getBody()->getContents();
@@ -46,7 +46,7 @@ class SuggestWizardReceiver extends SuggestWizardDefaultReceiver
                 $data = json_decode((string) $string, true);
 
                 $items = $data['root']['employees'];
-                foreach($items as $employee) {
+                foreach ($items as $employee) {
                     $newUid = StringUtility::getUniqueId('NEW');
                     $rows[$this->table . '_' . $newUid] = [
                         'class' => '',
@@ -58,7 +58,7 @@ class SuggestWizardReceiver extends SuggestWizardDefaultReceiver
                         'text' => '<table class="table-items">
                                         <tr>
                                             <td class="img-fluid img-employee"><img src="'. $employee['FOTOURL'] .'" alt="" class="list-item-img" /></td>
-                                            <td><div class="employee-name">'.$employee['PERSON_FORNAVN'] . ' ' . $employee['PERSON_EFTERNAVN'] .'</div><br>'. $employee['ANSAT_UOFF_STIL_TEKST'] .'<br>'. $employee['ANSAT_ARB_EMAIL'] .'</td>
+                                            <td><div class="employee-name">'.$employee['PERSON_FORNAVN'] . ' ' . $employee['PERSON_EFTERNAVN'] .'</div>'. $employee['ANSAT_UOFF_STIL_TEKST'] .'<br>'. $employee['ANSAT_ARB_EMAIL'] .'</td>
                                         </tr>
                                     </table>',
                         'uid' => 65 //$employee['ANSAT_ARB_EMAIL'],
