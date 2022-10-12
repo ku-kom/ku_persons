@@ -61,7 +61,7 @@ class SuggestWizardReceiver extends SuggestWizardDefaultReceiver
                                             <td><div class="employee-name">'.$employee['PERSON_FORNAVN'] . ' ' . $employee['PERSON_EFTERNAVN'] .'</div>'. $employee['ANSAT_UOFF_STIL_TEKST'] .'<br>'. $employee['ANSAT_ARB_EMAIL'] .'</td>
                                         </tr>
                                     </table>',
-                        'uid' => 65 //$employee['ANSAT_ARB_EMAIL'],
+                        'uid' => 67 //$employee['ANSAT_ARB_EMAIL'],
                     ];
                 }
             }
