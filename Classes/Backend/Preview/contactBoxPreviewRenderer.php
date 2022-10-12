@@ -21,17 +21,17 @@ class contactBoxPreviewRenderer implements PreviewRendererInterface
 
     public function renderPageModulePreviewContent(GridColumnItem $item): string
     {
-        return '';
-    }
-
-    public function renderPageModulePreviewFooter(GridColumnItem $item): string
-    {
         $employee = '';
         $record = $item->getRecord();
         if ($record['ku_persons_list_search']) {
             $employee .= htmlspecialchars($record['ku_persons_list_search']);
         }
         return $employee;
+    }
+
+    public function renderPageModulePreviewFooter(GridColumnItem $item): string
+    {
+        return '';
     }
 
     public function wrapPageModulePreview(string $previewHeader, string $previewContent, GridColumnItem $item): string
