@@ -52,10 +52,15 @@ class SuggestWizardReceiver extends SuggestWizardDefaultReceiver
                         'class' => '',
                         'label' => $params['value'],
                         'path' => '',
-                        'sprite' => $this->iconFactory->getIcon('ku-persons-icon', Icon::SIZE_SMALL)->render('inline'),
+                        'sprite' => '',
                         'style' => '',
                         'table' => $this->table,
-                        'text' => $employee['PERSON_FORNAVN'] . ' ' . $employee['PERSON_EFTERNAVN'],
+                        'text' => '<table class="table-items">
+                                        <tr>
+                                            <td class="img-fluid img-employee"><img src="'. $employee['FOTOURL'] .'" alt="" class="list-item-img" /></td>
+                                            <td><div class="employee-name">'.$employee['PERSON_FORNAVN'] . ' ' . $employee['PERSON_EFTERNAVN'] .'</div><br>'. $employee['ANSAT_UOFF_STIL_TEKST'] .'<br>'. $employee['ANSAT_ARB_EMAIL'] .'</td>
+                                        </tr>
+                                    </table>',
                         'uid' => 65 //$employee['ANSAT_ARB_EMAIL'],
                     ];
                 }
