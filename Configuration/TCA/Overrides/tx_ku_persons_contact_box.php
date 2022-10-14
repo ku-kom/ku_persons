@@ -9,12 +9,13 @@
 
 defined('TYPO3') or die('Access denied.');
 
-// Add Content Element
-if (!is_array($GLOBALS['TCA']['tt_content']['types']['ku_persons'] ?? false)) {
-    $GLOBALS['TCA']['tt_content']['types']['ku_persons'] = [];
-}
+$contentTypeName = 'ku_persons';
+$ll = 'LLL:EXT:'.$contentTypeName.'/Resources/Private/Language/locallang_be.xlf:';
 
-$ll = 'LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:';
+// Add Content Element
+if (!is_array($GLOBALS['TCA']['tt_content']['types'][$contentTypeName] ?? false)) {
+    $GLOBALS['TCA']['tt_content']['types'][$contentTypeName] = [];
+}
 
 // Add content element to selector list
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
@@ -22,7 +23,7 @@ $ll = 'LLL:EXT:ku_persons/Resources/Private/Language/locallang_be.xlf:';
     'CType',
     [
         $ll . 'title',
-        'ku_persons',
+        $contentTypeName,
         'ku-persons-icon'
     ],
     'special',
@@ -81,12 +82,12 @@ $ku_persons = [
 ];
 
 // Add fields to both cType and plugin
-$GLOBALS['TCA']['tt_content']['types']['ku_persons'] = $ku_persons;
-$GLOBALS['TCA']['tt_content']['types']['list'] = $ku_persons;
+$GLOBALS['TCA']['tt_content']['types'][$contentTypeName] = $ku_persons;
+//$GLOBALS['TCA']['tt_content']['types']['list'] = $ku_persons;
 
 /**
  * Registers backend previewRenderer for custom content element and plugin
  */
 
-$GLOBALS['TCA']['tt_content']['types']['ku_persons']['previewRenderer'] = \UniversityOfCopenhagen\KuPersons\Backend\Preview\contactBoxPreviewRenderer::class;
-$GLOBALS['TCA']['tt_content']['types']['list']['previewRenderer'] = \UniversityOfCopenhagen\KuPersons\Backend\Preview\contactBoxPreviewRenderer::class;
+$GLOBALS['TCA']['tt_content']['types'][$contentTypeName]['previewRenderer'] = \UniversityOfCopenhagen\KuPersons\Backend\Preview\contactBoxPreviewRenderer::class;
+//$GLOBALS['TCA']['tt_content']['types']['list']['previewRenderer'] = \UniversityOfCopenhagen\KuPersons\Backend\Preview\contactBoxPreviewRenderer::class;
