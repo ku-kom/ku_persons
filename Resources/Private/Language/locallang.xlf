@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" datatype="plaintext" original="messages" date="2022-08-23UTC07:12:050">
+    <file source-language="en" datatype="plaintext" original="messages" date="2022-10-23UTC07:12:050">
         <header>
             <authorName>Nanna Ellegaard</authorName>
             <authorEmail>nel@adm.ku.dk</authorEmail>
         </header>
         <body>
-        <trans-unit id="phonebook_label" resname="phonebook_label">
-            <source>KU contact box</source>
-        </trans-unit>
-        <trans-unit id="phonebook_placeholder" resname="phonebook_placeholder">
-            <source>Search for a UCPH employee and add a contact box</source>
+        <trans-unit id="persons.error" resname="persons.error">
+            <source>Error fetching data.</source>
         </trans-unit>
         </body>
     </file>
