@@ -42,6 +42,7 @@ if (!is_array($GLOBALS['TCA']['tt_content']['types'][$contentTypeName] ?? false)
                 'allowed' => 'tt_content',
                 'minitems' => 0,
                 'maxitems' => 100,
+                'size' => '1',
                 'fieldControl' => [
                     'elementBrowser' => [
                         'disabled' => true,
